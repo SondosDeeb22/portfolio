@@ -250,11 +250,6 @@ section{
 }
 
 .item strong{display:block}
-/* .item p{margin:2px 0 0; color: var(--muted); font-size: 13px} */
-
-.item a:hover{
-   color: #2A6DA8;
- }
 
  /* list of certificates and participations  --------------------------------------------------*/
  .list{ 
