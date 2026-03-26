@@ -306,6 +306,22 @@ summary{
     grid-column: span 12;
 }
 
+.homework-section{
+    grid-column: span 12;
+}
+
+.homeworks{
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   justify-content: flex-start;
+   gap: 10px;
+}
+
+.homeworks .btn{
+   margin: 0;
+}
+
 
 /* ========================================================================== */
 /* Labptop view */
