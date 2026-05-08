@@ -322,6 +322,17 @@ summary{
    margin: 0;
 }
 
+.hw8-block{
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 10px;
+   border: 1px solid rgba(194,167,94,.35);
+   border-radius: 8px;
+   padding: 10px;
+   background: rgba(194,167,94,.08);
+}
+
 
 /* ========================================================================== */
 /* Labptop view */
