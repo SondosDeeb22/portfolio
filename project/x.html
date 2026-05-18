@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Buying Guide 101</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* HERO (SAME TEMPLATE) */
+        .hero {
+            background-color: #ffd700;
+            padding: 60px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text h1 {
+            color: #111;
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            color: #222;
+            font-size: 18px;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 320px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            padding: 10px 16px;
+            background: #111;
+            color: #ffd700;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* MAIN */
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #cfcfcf;
+            margin-bottom: 15px;
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1d1d1d;
+            padding: 25px;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 15px;
+        }
+
+        /* GUIDE BOXES */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .guide-box {
+            background-color: #1d1d1d;
+            padding: 30px;
+            border-radius: 14px;
+        }
+
+        .guide-box h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        .guide-box ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .guide-box li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--======================================================================================-->
+    <!--======================================================================================-->
+    <!--======================================================================================-->
+
+    <!-- HERO -->
+    <div class="hero">
+
+        <a href="LaptopComponentAnalysis.html" class="back-btn">←</a>
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+                <h1>Laptop Buying Guide 101</h1>
+                <p>
+                    Learn how to choose the right laptop by understanding CPU, GPU, RAM, Storage, and OS
+                    based on your real needs.
+                </p>
+            </div>
+
+            <div class="hero-image">
+                <img src="laptop.png" alt="Laptop">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+
+        <!-- INTRO -->
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>
+                Choosing a laptop is not about buying the most expensive option — it's about matching hardware
+                to your actual use case.
+            </p>
+        </div>
+
+        <!-- COMPONENTS -->
+        <div class="section">
+            <h2>Main Laptop Components</h2>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <h3>CPU</h3>
+                    <p>The brain of the laptop. Handles performance and processing speed.</p>
+                </div>
+
+                <div class="card">
+                    <h3>GPU</h3>
+                    <p>Responsible for graphics, gaming, rendering, and AI workloads.</p>
+                </div>
+
+                <div class="card">
+                    <h3>RAM</h3>
+                    <p>Temporary memory used for multitasking and smooth performance.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Storage</h3>
+                    <p>Where files and system data are stored (SSD recommended).</p>
+                </div>
+
+                <div class="card">
+                    <h3>OS</h3>
+                    <p>Operating system like Windows, macOS, or Linux.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CHOOSING GUIDE -->
+        <div class="section">
+            <h2>What Should You Choose?</h2>
+
+            <div class="guide-grid">
+
+                <!-- CPU -->
+                <div class="guide-box">
+                    <h3>CPU Choice</h3>
+                    <p><span class="highlight">Students / Basic Use:</span> i5 / Ryzen 5</p>
+                    <p><span class="highlight">Programming / Work:</span> i7 / Ryzen 7</p>
+                    <p><span class="highlight">Heavy Work:</span> i9 / Ryzen 9</p>
+                </div>
+
+                <!-- GPU -->
+                <div class="guide-box">
+                    <h3>GPU Choice</h3>
+                    <p><span class="highlight">Basic Use:</span> Integrated GPU</p>
+                    <p><span class="highlight">Gaming:</span> RTX 4050 / 4060+</p>
+                    <p><span class="highlight">3D / AI:</span> RTX 4070 / 4080+</p>
+                </div>
+
+                <!-- RAM -->
+                <div class="guide-box">
+                    <h3>RAM Choice</h3>
+                    <p><span class="highlight">Basic:</span> 8GB</p>
+                    <p><span class="highlight">Recommended:</span> 16GB</p>
+                    <p><span class="highlight">Heavy Work:</span> 32GB+</p>
+                </div>
+
+                <!-- STORAGE -->
+                <div class="guide-box">
+                    <h3>Storage Choice</h3>
+                    <p><span class="highlight">Minimum:</span> 512GB SSD</p>
+                    <p><span class="highlight">Recommended:</span> 1TB SSD</p>
+                    <p><span class="highlight">Avoid:</span> HDD only systems</p>
+                </div>
+
+                <!-- OS -->
+                <div class="guide-box">
+                    <h3>Operating System</h3>
+                    <p><span class="highlight">Windows:</span> Best for gaming & general use</p>
+                    <p><span class="highlight">macOS:</span> Best for creative work</p>
+                    <p><span class="highlight">Linux:</span> Best for developers</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

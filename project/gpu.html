@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Analysis</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* HERO (MATCHED WITH GUIDE 101) */
+        .hero {
+            background-color: #ffd700;
+            padding: 60px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text h1 {
+            color: #111;
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            color: #222;
+            font-size: 18px;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 320px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* BACK BUTTON (same behavior as guide page) */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            padding: 10px 16px;
+            background: #111;
+            color: #ffd700;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #cfcfcf;
+            margin-bottom: 15px;
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1d1d1d;
+            padding: 25px;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 15px;
+        }
+
+        /* IMAGE SECTION (same as guide page) */
+        .middle-image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+        }
+
+        .middle-image img {
+            width: 70%;
+            max-width: 700px;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+
+        /* GPU BOX GRID */
+        .gpu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gpu-box {
+            background-color: #1d1d1d;
+            padding: 30px;
+            border-radius: 14px;
+        }
+
+        .gpu-box h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        .gpu-box ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .gpu-box li {
+            margin-bottom: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO (IDENTICAL STRUCTURE TO GUIDE PAGE) -->
+    <div class="hero">
+
+        <a href="LaptopComponentAnalysis.html" class="back-btn">←</a>
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+                <h1>GPU Analysis</h1>
+                <p>
+                    Graphics Processing Units affect gaming,
+                    rendering, AI workloads, and visual performance.
+                </p>
+            </div>
+
+            <div class="hero-image">
+                <img src="gpu.png" alt="GPU">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <div class="section">
+            <h2>What is a GPU?</h2>
+            <p>
+                The GPU (Graphics Processing Unit) is responsible for rendering images,
+                videos, and animations. It handles parallel processing tasks that are
+                essential for graphics-heavy applications.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Why GPUs Matter</h2>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <h3>Gaming Performance</h3>
+                    <p>Renders real-time graphics and effects smoothly.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Video Editing</h3>
+                    <p>Speeds up rendering and export workflows.</p>
+                </div>
+
+                <div class="card">
+                    <h3>3D Rendering</h3>
+                    <p>Used in CAD, animation, and simulation.</p>
+                </div>
+
+                <div class="card">
+                    <h3>AI Processing</h3>
+                    <p>Accelerates machine learning computations.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Display Output</h3>
+                    <p>Controls resolution and multi-monitor setups.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="middle-image">
+            <img src="gpu.v.s.png" alt="GPU comparison">
+        </div>
+
+        <div class="section">
+            <h2>Types of GPUs</h2>
+
+            <div class="gpu-grid">
+
+                <div class="gpu-box">
+                    <h3>Integrated GPU</h3>
+                    <p>Built into CPU and shares system memory.</p>
+                    <ul>
+                        <li>Low power usage</li>
+                        <li>Basic performance</li>
+                        <li>Not ideal for gaming</li>
+                        <li>Budget laptops</li>
+                    </ul>
+                </div>
+
+                <div class="gpu-box">
+                    <h3>Dedicated GPU</h3>
+                    <p>Separate hardware with its own VRAM.</p>
+                    <ul>
+                        <li>High performance</li>
+                        <li>Gaming & rendering</li>
+                        <li>Higher power draw</li>
+                        <li>Gaming/workstation laptops</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

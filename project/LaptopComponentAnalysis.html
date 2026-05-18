@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Component Analysis</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 300px;
+            background-image: url('background top , yellow.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #ffd700;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+        .intro-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* COMPONENTS (NEW CLEAN LAYOUT) */
+        .components-title {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .components-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .components-grid a {
+            text-decoration: none;
+            color: #e0e0e0;
+            background-color: #1e1e1e;
+            padding: 14px 26px;
+            border-radius: 8px;
+            border: 1px solid #2d2d2d;
+            transition: all 0.25s ease;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .components-grid a:hover {
+            background-color: #ffd700;
+            color: #121212;
+            border-color: #ffd700;
+            transform: translateY(-3px);
+        }
+
+        /* GUIDE BUTTON */
+        .guide {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            width: fit-content;
+
+            color: white;
+            background-color: #2d2d2d;
+            padding: 15px 30px;
+            border-radius: 6px;
+            border: 1px solid #3d3d3d;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .guide:hover {
+            background-color: #ffd700;
+            color: #121212;
+            border-color: #ffd700;
+        }
+
+        /* IMAGE */
+        .image-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero-banner"></div>
+
+    <div class="container">
+
+        <h1>Laptop Component Analysis</h1>
+
+        <div class="intro-section">
+            <p>
+                Hello, I'm Sondos, a software engineering student, who is passionate about technology.
+            </p>
+            <p>
+                I enjoy exploring laptop components like CPU, GPU, RAM, storage, and operating systems,
+                and understanding how they impact performance in real systems.
+                This website shares a simple breakdown of key laptop components and a practical 101 buying guide.
+            </p>
+        </div>
+
+        <h2 class="components-title">Main Components</h2>
+
+        <div class="components-grid">
+            <a href="cpu.html">CPU</a>
+            <a href="gpu.html">GPU</a>
+            <a href="ram.html">RAM</a>
+            <a href="storage.html">Storage</a>
+            <a href="os.html">Operating System</a>
+        </div>
+    
+        <div class="image-section">
+            <img src="tecnico-em-eletronica.webp" alt="Technical Electronics">
+        </div>
+        <a href="guide101.html" class="guide">Buying Laptop Guide 101</a>
+
+     
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Technologies</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* Hero Section */
+
+        .hero{
+            background-color: #ffd700;
+            height: 320px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 40px 80px;
+            overflow: hidden;
+        }
+
+        .hero-text h1{
+            color: #111;
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p{
+            color: #222;
+            font-size: 18px;
+            max-width: 500px;
+        }
+
+        .hero img{
+            height: 250px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Main Container */
+
+        .container{
+            width: 85%;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        .section{
+            margin-bottom: 70px;
+        }
+
+        h2{
+            color: #ffd700;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        p{
+            color: #cfcfcf;
+            margin-bottom: 15px;
+        }
+
+        /* return button */
+        .back-btn{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            padding: 10px 16px;
+            background: #111;
+            color: #ffd700;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover{
+            transform: translateY(-2px);
+        }
+
+        /* Cards */
+
+        .card-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card{
+            background-color: #1d1d1d;
+            padding: 25px;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .card h3{
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+
+        .card p{
+            font-size: 15px;
+        }
+
+        /* Middle Image */
+
+        .middle-image{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+        }
+
+        .middle-image img{
+            width: 70%;
+            max-width: 700px;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+
+        /* Storage Boxes */
+
+        .storage-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .storage-box{
+            background-color: #1d1d1d;
+            padding: 30px;
+            border-radius: 14px;
+        }
+
+        .storage-box h3{
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        .storage-box ul{
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .storage-box li{
+            margin-bottom: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+
+    <div class="hero">
+            <a href="LaptopComponentAnalysis.html" class="back-btn">←</a>
+
+        <div class="hero-text">
+
+            <h1>Storage Technologies</h1>
+
+            <p>
+                it affects laptop speed,
+                application loading times, and overall responsiveness.
+            </p>
+
+        </div>
+
+        <img src="storage.png" alt="storage">
+
+    </div>
+
+
+
+    <div class="container">
+
+        <!-- Storage Definition -->
+
+        <div class="section">
+
+            <h2>Storage Definition</h2>
+
+            <p>
+                Storage devices are responsible for saving files,
+                applications, and operating systems permanently.
+            </p>
+
+        </div>
+
+
+
+        <!-- Storage Types -->
+
+        <div class="section">
+
+            <h2>Storage Types</h2>
+
+            <div class="storage-grid">
+
+                <!-- HDD -->
+
+                <div class="storage-box">
+
+                    <h3>HDD Storage</h3>
+
+                    <p>
+                        Hard Disk Drives (HDDs) use mechanical spinning disks
+                        and moving read/write heads to store data.
+                    </p>
+
+                    <ul>
+                        <li>Lower cost per gigabyte</li>
+                        <li>High storage capacities</li>
+                        <li>Slower read and write speeds</li>
+                        <li>Higher power consumption</li>
+                        <li>More vulnerable to physical damage</li>
+                    </ul>
+
+                </div>
+
+
+
+                <!-- SSD -->
+
+                <div class="storage-box">
+
+                    <h3>SSD Storage</h3>
+
+                    <p>
+                        Solid State Drives (SSDs) use flash memory
+                        instead of mechanical moving parts.
+                    </p>
+
+                    <ul>
+                        <li>Faster boot times</li>
+                        <li>Faster file transfers</li>
+                        <li>Improved system responsiveness</li>
+                        <li>Better durability</li>
+                        <li>Lower noise and heat generation</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Middle Image -->
+
+        <div class="middle-image">
+
+            <img src="ssd-hdd.png" alt="storage comparison">
+
+        </div>
+
+
+
+        <!-- NVMe -->
+
+        <div class="section">
+
+            <h2>NVMe SSD Technology</h2>
+
+            <p>
+                Modern NVMe SSDs provide extremely fast performance
+                by using PCIe connections instead of older SATA interfaces.
+            </p>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <h3>Faster Startup</h3>
+                    <p>NVMe drives significantly improve system boot times.</p>
+                </div>
+
+                <div class="card">
+                    <h3>File Transfers</h3>
+                    <p>Large files transfer much faster compared to SATA storage.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Game Loading</h3>
+                    <p>Games load faster and large open-world environments render more smoothly.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Professional Software</h3>
+                    <p>Video editing, 3D rendering, and development software benefit significantly from NVMe storage speeds.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
