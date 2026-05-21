@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-commerce Usage Survey</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, #f5f0ff 0%, #ffffff 300px);
+      color: #1e1030;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 64px 24px 48px;
+    }
+    .badge {
+      display: inline-block;
+      background: #ede9fe;
+      color: #7c3aed;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #111;
+    }
+    h1 span { color: #7c3aed; }
+    .subtitle {
+      margin-top: 14px;
+      font-size: 16px;
+      color: #6b7280;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0 24px;
+    }
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e9d5ff;
+    }
+    .section-title span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      white-space: nowrap;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border: 1px solid #ede9fe;
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(124,58,237,0.06);
+    }
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card-header h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1e1030;
+      line-height: 1.4;
+    }
+    .responses-badge {
+      flex-shrink: 0;
+      background: #f5f0ff;
+      color: #a78bfa;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ── DONUT CHART (CSS conic-gradient) ── */
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .donut-wrap {
+      flex-shrink: 0;
+      position: relative;
+      width: 160px;
+      height: 160px;
+    }
+    .donut {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+    }
+    .donut-hole {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #7c3aed;
+    }
+
+    /* ── LEGEND + BARS ── */
+    .legend {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .legend-item { display: flex; flex-direction: column; gap: 4px; }
+    .legend-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .legend-dot-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #374151;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-values {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legend-count {
+      font-size: 13px;
+      font-weight: 700;
+      color: #7c3aed;
+    }
+    .legend-pct {
+      font-size: 11px;
+      color: #9ca3af;
+      width: 40px;
+      text-align: right;
+    }
+    .progress-track {
+      height: 6px;
+      background: #f3e8ff;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    /* ── HORIZONTAL BAR CHART ── */
+    .hbar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .hbar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hbar-label {
+      font-size: 12px;
+      color: #6b7280;
+      width: 160px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .hbar-track {
+      flex: 1;
+      background: #f3e8ff;
+      border-radius: 999px;
+      height: 28px;
+      overflow: hidden;
+    }
+    .hbar-fill {
+      height: 100%;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+      min-width: 36px;
+    }
+
+    /* ── VERTICAL BAR CHART ── */
+    .vbar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      height: 200px;
+      padding-top: 20px;
+    }
+    .vbar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      height: 100%;
+    }
+    .vbar-value {
+      font-size: 12px;
+      font-weight: 700;
+      color: #7c3aed;
+    }
+    .vbar-fill {
+      width: 100%;
+      border-radius: 6px 6px 0 0;
+      min-height: 4px;
+    }
+    .vbar-label {
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ── PLATFORM TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .tag-note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    /* ── CONCLUSION ── */
+    .prose p {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ── REFERENCES ── */
+    .ref-list { display: flex; flex-direction: column; gap: 18px; }
+    .ref-item { display: flex; gap: 12px; }
+    .ref-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #a78bfa;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .ref-source { font-size: 13px; font-weight: 600; color: #1e1030; margin-bottom: 3px; }
+    .ref-link {
+      font-size: 13px;
+      color: #7c3aed;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      word-break: break-all;
+    }
+    .ref-link:hover { color: #4c1d95; }
+
+    /* ── CONTACT ── */
+    .contact { text-align: center; }
+    .contact p { font-size: 13px; color: #9ca3af; margin-bottom: 8px; }
+    .contact a {
+      font-size: 16px;
+      font-weight: 600;
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    .contact a:hover { color: #4c1d95; text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #f3e8ff;
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #d1d5db;
+    }
+
+    @media (max-width: 560px) {
+      .card { padding: 20px 18px; }
+      .hbar-label { width: 110px; font-size: 11px; }
+      .vbar-chart { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Survey Research</div>
+    <h1>E-commerce Usage Survey<br><span>Survey Findings</span></h1>
+    <p class="subtitle">A study examining online shopping habits, platform preferences, and demographic patterns among 22 participants.</p>
+  </header>
+
+  <main>
+
+    <!-- ══ SURVEY RESULTS ══ -->
+    <div class="section-title"><span>Survey Results</span></div>
+
+    <!-- Q1 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Have you used an online shopping website before?</h3>
+        <span class="responses-badge">22 responses</span>
+      </div>
+      <div class="chart-row">
+        <div class="donut-wrap">
+          <div class="donut" style="background: conic-gradient(#7c3aed 0% 86.4%, #c4b5fd 86.4% 100%)"></div>
+          <div class="donut-hole">22</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#7c3aed"></span>Yes</div>
+              <div class="legend-values"><span class="legend-count">19</span><span class="legend-pct">86.4%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:86.4%;background:#7c3aed"></div></div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#c4b5fd"></span>No</div>
+              <div class="legend-values"><span class="legend-count">3</span><span class="legend-pct">13.6%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:13.6%;background:#c4b5fd"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>If yes, have you purchased any item from that platform?</h3>
+        <span class="responses-badge">22 responses</span>
+      </div>
+      <div class="chart-row">
+        <div class="donut-wrap">
+          <div class="donut" style="background: conic-gradient(#7c3aed 0% 63.6%, #c4b5fd 63.6% 100%)"></div>
+          <div class="donut-hole">22</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#7c3aed"></span>Yes</div>
+              <div class="legend-values"><span class="legend-count">14</span><span class="legend-pct">63.6%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:63.6%;background:#7c3aed"></div></div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#c4b5fd"></span>No</div>
+              <div class="legend-values"><span class="legend-count">8</span><span class="legend-pct">36.4%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:36.4%;background:#c4b5fd"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>If you use online shopping websites, how often do you place an order?</h3>
+        <span class="responses-badge">22 responses</span>
+      </div>
+      <div class="hbar-chart">
+        <div class="hbar-row">
+          <span class="hbar-label">Once a week</span>
+          <div class="hbar-track"><div class="hbar-fill" style="width:75%;background:#7c3aed">6 &nbsp;·&nbsp; 27.3%</div></div>
+        </div>
+        <div class="hbar-row">
+          <span class="hbar-label">Once a month</span>
+          <div class="hbar-track"><div class="hbar-fill" style="width:37.5%;background:#8b5cf6">3 &nbsp;·&nbsp; 13.6%</div></div>
+        </div>
+        <div class="hbar-row">
+          <span class="hbar-label">Once a year</span>
+          <div class="hbar-track"><div class="hbar-fill" style="width:75%;background:#a78bfa">6 &nbsp;·&nbsp; 27.3%</div></div>
+        </div>
+        <div class="hbar-row">
+          <span class="hbar-label">Rarely</span>
+          <div class="hbar-track"><div class="hbar-fill" style="width:37.5%;background:#c4b5fd">3 &nbsp;·&nbsp; 13.6%</div></div>
+        </div>
+        <div class="hbar-row">
+          <span class="hbar-label">Don't purchase online</span>
+          <div class="hbar-track"><div class="hbar-fill" style="width:50%;background:#ddd6fe">4 &nbsp;·&nbsp; 18.2%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>What is your age range?</h3>
+        <span class="responses-badge">22 responses</span>
+      </div>
+      <div class="vbar-chart">
+        <div class="vbar-col">
+          <span class="vbar-value">8</span>
+          <div class="vbar-fill" style="height:100%;background:#7c3aed"></div>
+          <span class="vbar-label">18–25</span>
+        </div>
+        <div class="vbar-col">
+          <span class="vbar-value">7</span>
+          <div class="vbar-fill" style="height:87.5%;background:#8b5cf6"></div>
+          <span class="vbar-label">26–39</span>
+        </div>
+        <div class="vbar-col">
+          <span class="vbar-value">3</span>
+          <div class="vbar-fill" style="height:37.5%;background:#a78bfa"></div>
+          <span class="vbar-label">40–50</span>
+        </div>
+        <div class="vbar-col">
+          <span class="vbar-value">4</span>
+          <div class="vbar-fill" style="height:50%;background:#c4b5fd"></div>
+          <span class="vbar-label">Over 50</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>What is your gender?</h3>
+        <span class="responses-badge">20 responses</span>
+      </div>
+      <div class="chart-row">
+        <div class="donut-wrap">
+          <div class="donut" style="background: conic-gradient(#7c3aed 0% 50%, #c4b5fd 50% 100%)"></div>
+          <div class="donut-hole">20</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#7c3aed"></span>Female</div>
+              <div class="legend-values"><span class="legend-count">10</span><span class="legend-pct">50.0%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:50%;background:#7c3aed"></div></div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#c4b5fd"></span>Male</div>
+              <div class="legend-values"><span class="legend-count">10</span><span class="legend-pct">50.0%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:50%;background:#c4b5fd"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>What is your level of education?</h3>
+        <span class="responses-badge">22 responses</span>
+      </div>
+      <div class="chart-row">
+        <div class="donut-wrap">
+          <div class="donut" style="background: conic-gradient(#7c3aed 0% 13.6%, #a78bfa 13.6% 59.1%, #c4b5fd 59.1% 100%)"></div>
+          <div class="donut-hole">22</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#7c3aed"></span>High school</div>
+              <div class="legend-values"><span class="legend-count">3</span><span class="legend-pct">13.6%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:13.6%;background:#7c3aed"></div></div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#a78bfa"></span>College graduate</div>
+              <div class="legend-values"><span class="legend-count">10</span><span class="legend-pct">45.5%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:45.5%;background:#a78bfa"></div></div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-label-row">
+              <div class="legend-dot-label"><span class="dot" style="background:#c4b5fd"></span>Graduate school</div>
+              <div class="legend-values"><span class="legend-count">9</span><span class="legend-pct">40.9%</span></div>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:40.9%;background:#c4b5fd"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="card">
+      <div class="card-header">
+        <h3>What is your favorite online shopping website?</h3>
+        <span class="responses-badge">22 responses</span>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:#ede9fe;color:#7c3aed;border:1px solid #ddd6fe">Amazon</span>
+        <span class="tag" style="background:#f5f0ff;color:#8b5cf6;border:1px solid #e9d5ff">Shein</span>
+        <span class="tag" style="background:#f3e8ff;color:#9333ea;border:1px solid #e9d5ff">Trendyol</span>
+        <span class="tag" style="background:#faf5ff;color:#a78bfa;border:1px solid #e9d5ff">Noon</span>
+        <span class="tag" style="background:#f5f0ff;color:#7c3aed;border:1px solid #ddd6fe">Temu</span>
+        <span class="tag" style="background:#ede9fe;color:#6d28d9;border:1px solid #ddd6fe">Namshi</span>
+        <span class="tag" style="background:#faf5ff;color:#8b5cf6;border:1px solid #e9d5ff">AliExpress</span>
+        <span class="tag" style="background:#f9fafb;color:#9ca3af;border:1px solid #e5e7eb">None</span>
+      </div>
+    </div>
+
+    <!-- ══ CONCLUSION ══ -->
+    <div class="section-title"><span>Conclusion</span></div>
+
+    <div class="card prose">
+      <p>The survey results reveal that the majority of participants (86.4%) have used an online shopping website, and of those, 63.6% have made at least one purchase. Shopping frequency varied widely, with roughly equal groups placing orders once a week, once a year, or rarely, suggesting a diverse range of engagement levels with e-commerce platforms.</p>
+      <p>Demographically, respondents were evenly split by gender (50/50), with the largest age group being 18–25 (36.4%). Educational background skewed towards higher education, with 86.4% having attended college or graduate school, which may partly explain the comfort with digital commerce.</p>
+      <p>Platform preferences were broad, reflecting the global diversity of online marketplaces available today. Amazon, Shein, and Trendyol appeared frequently, highlighting both global giants and region-specific platforms serving the respondent base.</p>
+    </div>
+
+    <!-- ══ REFERENCES ══ -->
+    <div class="section-title"><span>References</span></div>
+
+    <div class="card">
+      <div class="ref-list">
+        <div class="ref-item">
+          <div class="ref-dot"></div>
+          <div>
+            <div class="ref-source">Pew Research Center</div>
+            <a class="ref-link" href="https://www.pewresearch.org/internet/2016/12/19/online-shopping-and-purchasing-preferences/" target="_blank" rel="noopener">
+              Online Shopping and Purchasing Preferences (2016)
+            </a>
+          </div>
+        </div>
+        <div class="ref-item">
+          <div class="ref-dot"></div>
+          <div>
+            <div class="ref-source">Addicta</div>
+            <a class="ref-link" href="https://addicta.com.tr/article/view/49" target="_blank" rel="noopener">
+              addicta.com.tr/article/view/49
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONTACT ══ -->
+    <div class="section-title"><span>Contact</span></div>
+
+    <div class="card contact">
+      <p>For inquiries, reach out at</p>
+      <a href="mailto:20224462@std.neu.edu.tr">20224462@std.neu.edu.tr</a>
+    </div>
+
+  </main>
+
+
+</body>
+</html>
